@@ -1,0 +1,40 @@
+\section{Systembetrachtung elektronischer Schaltungen}
+\subsection{Blockdiagramme}
+\subsubsection{Verknüpfung}
+\begin{tabular}{ll}
+Serieschaltung & $G_{total}=G_1G_2$\\
+Parallelschaltung & $G_{total}=G_1+G_2$\\
+Rückkopplung & $G_{total}=\frac{G_V}{(1+G_VG_R)}$\\
+\end{tabular}
+\subsubsection{Formel von Mason}
+$T=\frac{\Sigma_iP_i\Delta_i}{\Delta}$, mit
+\begin{tabular}{ll}
+$P_i$ & Vorwärtspfade durch das Diagramm \\
+$\Delta$ & Graphendeterminante \\
+\end{tabular}\\
+\textbf{Graphendeterminante}
+\begin{itemize}
+\item 1
+\item minus Kreisverstärkung aller Kreise $L_i$
+\item plus das Produkt der Kreisverstärkungen von jeweils zwei Kreisen, die keine Knoten gemeinsam haben
+\item minus das Produkt der Kreisverstärkungen von jeweils drei Kreisen, die keine Knoten gemeinsam haben
+\item plus das Produkt der Kreisverstärkungen von jeweils vier Kreisen, die keine Knoten gemeinsam haben
+\item etc.
+\end{itemize}
+\subsection{Übertragungsfunktion}
+\begin{tabular}{ll}
+UTF & $G(s)=\frac{V_{out}(s)}{V_{in}(s)}$\\
+Amplitute & $|G|=\sqrt{Re(G)^2+Im(G)^2}$\\
+Phase & $\varphi\{G\}=arctan\frac{Im(G)}{Re(G)}$\\
+\end{tabular}\\
+%TODO hier könnte man etwas mehr schrieben. Wenn man Lust hätte
+\subsection{Bodediagramme}
+\subsubsection{Vorteile der Bode-Darstellung}
+Amplitudenabfall linear mit 20dB/Dekade\\
+Grenzfrequenz beim Knickpunkt sichtbar\\
+Multipkikation zweier UTF: Amplituden- und Phasengänge werden addiert\\
+Division zweier UTF: Amplituden- und Phasengänge werden subtrahiert\\
+\subsubsection{Elementare Übertragungsglieder}
+Siehe Tabelle Seiten 2-19 und 2-20
+\subsubsection{Grafische Eigenschaften und Approximationen}
+Seite 2-21
