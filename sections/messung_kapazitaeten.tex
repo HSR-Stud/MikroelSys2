@@ -1,2 +1,66 @@
 \section{Messung von Kapazitäten}
 
+\subsection{Stromquelle}
+Prinzip: Kapazität wird mit einem Strom $I_0$ während einer fixen Zeit 
+$t_0$ aufgeladen. Die Kapazität berechnet sich aus
+\begin{equation*}
+	V_{\Out} = C_x \cdot I_0 \cdot t_0
+\end{equation*}
+Diese Art der Messung benötigt eine präzise Stromquelle oder eine
+Referenzkapazität. Weiter werden sehr kleine Ströme benötigt, was
+diese Methode für PCB-Design unpraktikabel macht. Im IC-Design
+ist eine Messung mit Stromquellen gut möglich.
+
+\subsection{RC-Oszillator}
+Mit einem Timer-Baustein, wie z.B. LM555 wird ein Oszillator aufgebaut,
+dessen Oszillatorfrequenz gemessen wird. Für den LM555 beträgt die Frequenz
+
+\begin{equation*}
+	f = \frac{1}{0.693 \cdot C_1 \cdot (R_1 + 2 R_2) }
+\end{equation*}
+
+\subsection{AC-Widerstand / Phasenverschiebung}
+Die Phasenverschiebung wird gemessen, indem mit einer Sinusquelle das RC-Netzwerk,
+bestehend aus der Messkapazität $C_x$ und einem bekannten Widerstand $R$,
+angeregt wird und die Phasenverschiebung mittels eines Lock-In Verstärkers
+gemessen wird.
+
+\begin{align*}
+	& \text{Eingangssignal} & f_{\In}(\varphi,t) &= \sin(\omega_0 t + \varphi) \\
+	& \text{Sync-Signal} & f_{\text{sync}}(t) &= \sin(\omega_0 t) \\
+	& \text{Produkt} & f_{\text{mod}}(\varphi,t) &= \sin(\omega_0 t + \varphi) \cdot \sin(\omega_0 t) \\
+	& & &= \frac{\cos(\varphi)}{2} - \frac{\cos(\varphi + 2 t \omega_0)}{2}
+\end{align*}
+
+Der Mittelwert von $f_{\text{mod}}$ über eine Periode beträgt also
+\begin{equation*}
+	\bar{f}_{\text{mod}} = \frac{\cos(\varphi)}{2}
+\end{equation*}
+womit sich die Phase des Eingangssignals $f_{\In}$ bestimmen lässt. \\
+
+Das gleiche Verfahren funktioniert auch mit einem Synchrongleichrichter. 
+Dabei wird das Eingangssignal mit einem zum Sinus phasengleichen Rechtecksignal
+multipliziert:
+\begin{equation*}
+	f_{\text{mod}}(\varphi,t)) = \text{sgn}\left(\sin(\omega_0 t)\right) \cdot \sin(\omega_0 t + \varphi)
+\end{equation*}
+Damit ergibt sich über eine Periode integriert
+\begin{equation*}
+	\bar{f}_{\text{mod}} = \frac{2 \cos(\varphi)}{\pi}
+\end{equation*}
+
+Damit werden Frequenzen geradzahliger Vielfacher ($2,4,...$) vom Integrator
+ausgelöscht, während ungeradzahlige Vielfache um den Faktor $1/n$
+abgeschwächt werden.
+
+\subsection{Ladungsverstärker}
+Eine Kapazität $C_x$ wird mit einer bekannten Spannung geladen. Die resultierende
+Ladung beträgt
+\begin{equation*}
+	Q_x = C_x \cdot V_{\Ref}
+\end{equation*}
+Die Kapazität wird nun auf eine bekannte Kapazität $C_{\Ref}$ entladen. 
+Es resultiert die Ausgangsspannung
+\begin{equation*}
+	V_{\Out} = - \frac{Q_x}{C_{\Ref}} = \frac{C_x}{C_{\Ref} V_{\Ref}}
+\end{equation*}
