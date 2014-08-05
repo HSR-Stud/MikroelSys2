@@ -1,4 +1,4 @@
-\documentclass{scrartcl}
+\documentclass[twocolumn]{scrartcl}
 
 \include{header/zusammenfassung}
 \usepackage{tikz}
@@ -8,23 +8,39 @@
 
 \title{MikroelSys2 Zusammenfassung}
 \subtitle{Dozent: G.Keel}
-\author{G. Köppel}
+\author{H.Badertscher}
 
 \begin{document}
-\selectlanguage{english}
+\selectlanguage{ngerman}
+
+\onecolumn
 
 \maketitle
+
 \newpage
 
 \tableofcontents
-\newpage
 
-\input{sections/systembetrachtung}
-\input{sections/opamps}
-\input{sections/scschaltung}
-\input{sections/ad-da-wandler}
-\input{sections/sigma-delta}
-\input{sections/oszillatoren}
-\input{sections/sensorsysteme}
+\twocolumn
+
+
+\input{sections/messung_kapazitaeten}
+
+\newpage
+\input{sections/aktive_filter}
+
+\newpage
+\input{sections/sc_schaltungen}
+
+\newpage
+\input{sections/op_verstaerker}
+
+\newpage
+\input{sections/sigma_delta_wandler}
+
+\newpage
+\input{sections/sensor_systeme}
+
+
 
 \end{document}
