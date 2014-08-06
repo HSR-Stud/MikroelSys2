@@ -1,15 +1,18 @@
-\documentclass[twocolumn]{scrartcl}
+\documentclass{scrartcl}
 
 \include{header/zusammenfassung}
 \usepackage{tikz}
 \usepackage{adjustbox}
+\usepackage{multicol}
 \usetikzlibrary{arrows}
 \usetikzlibrary{calc}
 
 \DeclareMathOperator{\Ref}{\text{ref}}
 \DeclareMathOperator{\In}{\text{in}}
 \DeclareMathOperator{\Out}{\text{out}}
-
+\DeclareMathOperator{\Zop}{Z_{\text{op}}}
+\DeclareMathOperator{\Int}{\text{int}}
+\DeclareMathOperator{\Fb}{\text{fb}}
 
 \title{MikroelSys2 Zusammenfassung}
 \subtitle{Dozent: G.Keel}
@@ -18,20 +21,12 @@
 \begin{document}
 \selectlanguage{ngerman}
 
-\onecolumn
-
 \maketitle
-
 \newpage
-
 \tableofcontents
-
-\twocolumn
-
+\newpage
 
 \input{sections/messung_kapazitaeten}
-
-\newpage
 \input{sections/aktive_filter}
 
 \newpage
