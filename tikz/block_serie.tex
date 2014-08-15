@@ -1,0 +1,12 @@
+\begin{circuitikz}[scale=0.7,transform shape]
+	\node[anchor=east] (xs) at (0,0) {$X(s)$};
+	\node[draw,rectangle] (t1) at (2,0) {$T_1(s)$};
+	\node[draw,rectangle] (t2) at (4,0) {$T_2(s)$};
+	\node[anchor=west] (ys) at (6,0) {$Y(s)$};		
+
+	\draw[thick,->] (xs) -- (t1);
+	\draw[thick,->] (t1) -- (t2);
+	\draw[thick,->] (t2) -- (ys);
+
+	\node at (0,-1) {}; \node at (0,1) {};
+\end{circuitikz}

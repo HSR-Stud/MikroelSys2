@@ -1,0 +1,15 @@
+\begin{circuitikz}[scale=0.7,transform shape]
+	\node[anchor=east] (xs) at (0,1) {$X(s)$};
+	\node[draw,rectangle] (t1) at (2,1) {$T_1(s)$};
+	\node[draw,rectangle] (t2) at (2,-1) {$T_2(s)$};
+	\node[anchor=west] (ys) at (6,1) {$Y(s)$};	
+	\node[draw,circle,minimum size=0mm,inner sep=2pt] (sum) at (4,1) {$+$};
+	\node[circle,fill,inner sep=0pt, minimum size=2mm] (p) at (0.75,1) {};	
+
+	\draw[thick,->] (xs) -- (t1);
+	\draw[thick,->] (p) |- (t2.west);
+	\draw[thick,->] (t1) -- (sum.west);
+	\draw[thick,->] (t2.east) -| (sum.south);
+	\draw[thick,->] (sum.east) -- (ys);
+
+\end{circuitikz}

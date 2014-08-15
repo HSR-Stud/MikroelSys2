@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=0.7]
+
+% Nodes
+\node (vin) at (-2,0) {$V_{\In}$};
+
+\node[rectangle,draw] (y1) at (0,1) {$Y_1$};
+\node at (0,0) {$\vdots$};
+\node[rectangle,draw] (yn) at (0,-1) {$Y_n$};
+
+\node[circle,draw] (sum) at (2,0) {$+$};
+\node[rectangle,draw] (zop) at (4,0) {$\Zop$};
+\node (vout) at (6,0) {$V_{\Out}$};
+
+% Connections
+\draw[thick,->] (vin) -- (y1);
+\draw[thick,->] (vin) -- (yn);
+
+\draw[thick,->] (y1) -- (sum);
+\draw[thick,->] (yn) -- (sum);
+
+\draw[thick,->] (sum) -- (zop);
+\draw[thick,->] (zop) -- (vout);
+
+\end{tikzpicture}

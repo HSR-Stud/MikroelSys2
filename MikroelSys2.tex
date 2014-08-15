@@ -6,6 +6,26 @@
 \usepackage{multicol}
 \usetikzlibrary{arrows}
 \usetikzlibrary{calc}
+\usepackage{circuitikz}
+\usepackage{tikz-timing}[2009/05/15]
+
+
+% Create the switch symbol
+\makeatletter
+\pgfcircdeclarebipole{}{\ctikzvalof{bipoles/interr/height 2}}{spst}{\ctikzvalof{bipoles/interr/height}}{\ctikzvalof{bipoles/interr/width}}{
+
+    \pgfsetlinewidth{\pgfkeysvalueof{/tikz/circuitikz/bipoles/thickness}\pgfstartlinewidth}
+
+    \pgfpathmoveto{\pgfpoint{\pgf@circ@res@left}{0pt}}
+    \pgfpathlineto{\pgfpoint{.6\pgf@circ@res@right}{\pgf@circ@res@up}}
+    \pgfusepath{draw}   
+}
+% make the shape accessible with nice syntax
+\def\pgf@circ@spst@path#1{\pgf@circ@bipole@path{spst}{#1}}
+\tikzset{switch/.style = {\circuitikzbasekey, /tikz/to path=\pgf@circ@spst@path, l=#1}}
+\tikzset{spst/.style = {switch = #1}}
+\makeatother
+
 
 \DeclareMathOperator{\Ref}{\text{ref}}
 \DeclareMathOperator{\In}{\text{in}}
@@ -41,6 +61,7 @@
 \newpage
 \input{sections/sensor_systeme}
 
+\input{sections/analyse_bloecke}
 
 
 \end{document}

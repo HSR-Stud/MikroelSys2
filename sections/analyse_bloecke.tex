@@ -1,0 +1,57 @@
+\section{Analyse von Schaltungen}
+Die Übertragungsfunktion von Opamp Schaltungen berechnet sich als 
+Summe aller Eingangs-Admittanzen $Y_n$ multipliziert mit der Opamp-Funktion
+$\Zop$. 
+\begin{multicols}{2}
+	\begin{center}
+		\input{tikz/analyse_block}
+	\end{center}
+	\vfill
+	\columnbreak
+	\hspace{2cm}
+	\begin{equation*}
+		T(z) = \sum\limits_{n} Y_{n} \Zop
+	\end{equation*}
+\end{multicols}
+
+\subsection{Spannung zu Strom}
+
+\begin{tabularx}{\linewidth}{p{0.25\linewidth}XX}
+	\textbf{Bezeichnung} & \textbf{Schaltung} & \textbf{Admittanz} \\ \hline
+	Widerstand & \input{tikz/block_r} & $Y_{r}(s) = \frac{1}{R}$ \\
+	Kapazität & \input{tikz/block_c} & $Y_{c}(s) = sC$ \\
+	Geschaltetes C & \input{tikz/block_sc1} & $Y_{sc}(s) = \frac{C}{T}$ \\
+	Geschaltetes C mit Inversion & \input{tikz/block_sc2} & $Y_{sc}(s) = -\frac{C}{T}$ \\
+	\hline
+\end{tabularx}
+
+\subsection{Strom zu Spannung}
+
+\begin{tabularx}{\linewidth}{p{0.25\linewidth}XX}
+	\textbf{Bezeichnung} & \textbf{Schaltung} & \textbf{Impedanz} \\ \hline
+	Opamp als Verstärker & \input{tikz/block_opv} & $\Zop = -R_f$ \\
+	Opamp als Integrator & \input{tikz/block_opi} & $\Zop = - \frac{1}{s C_f}$ \\
+	Opamp als Tiefpass & \input{tikz/block_opt} & $\Zop = - \frac{R_f}{1+s C_f R_f}$  \\
+	\hline
+\end{tabularx}
+
+\subsection{Rechenregeln Blockdiagramme}
+
+\begin{tabularx}{\linewidth}{p{0.25\linewidth}XX}
+	\textbf{Bezeichnung} & \textbf{Schaltung} & \textbf{Berechnung} \\ \hline
+	Serieschaltung & \input{tikz/block_serie} & $T(s) = T_1(s) \cdot T_2(s)$ \\
+	Parallelschaltung & \input{tikz/block_parallel} & $T(s) = T_1(s) + T_2(s)$ \\
+	Rückkopplung & \input{tikz/block_rueck} & $T(s) = \frac{T_1(s)}{1 - T_1(s) T_2(s)}$ \\
+	Mason & 
+		$T(s) = \frac{\sum\limits_{i=1}^N T_i \Delta_i}{\Delta}$ \newline
+		~\newline
+		$\Delta= 1 - \sum L_i +\sum L_i L_j -+ \ldots$ \newline
+		$\Delta_i$ wie $\Delta$, jedoch ohne Loops die den Pfad $i$ berühren
+		& 
+		$N$: Anzahl Vorwärtspfade \newline 
+		$T_i$: Vorwärtspfad $i$ \newline
+		$\Delta$: Determinante \newline 
+		$L_i$: Geschlossene Loops \newline 
+		$L_i L_j$: Zwei sich nicht berührende Loops \\
+	\hline
+\end{tabularx}
