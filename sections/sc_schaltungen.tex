@@ -1,1 +1,47 @@
 \section{Switched Capacitor Schaltungstechnik}
+
+\subsection{Grundlagen}
+
+\begin{multicols}{2}
+	\paragraph{Grundschaltung}~\\
+		\adjustbox{scale=1}{\input{tikz/sc_grundschaltung}} 
+	
+	\vfill
+	\columnbreak
+	
+	\paragraph{Timing}~\\
+	\begin{center}
+		\adjustbox{scale=1.2}{\input{tikz/sc_timing}} \\
+		Wichtig: non-overlapping \\
+		e: even phase \\
+		o: odd phase
+	\end{center}
+
+\end{multicols}
+	
+\begin{tabular}{lllll}
+	Phase PH0 & $S_0$ geschlossen & $S_1$ offen & $I_c = I_{\In} = \frac{V_{\In}}{R_s} e^{-\frac{t}{R_s C}}$ & \\
+	Phase PH1 & $S_0$ offen & $S_1$ geschlossen & $I_c = -I_{\Out} = \frac{V_{\In}}{R_s} e^{-\frac{t^*}{R_s C}}$ & mit $t^* = t - \frac{T_{\text{per}}}{2}$ \\
+	Durchschn. Strom & & & $I_d = \frac{\Delta Q}{T} = V_{\In} \frac{C}{T}$ \\
+	Äquiv. Widerstand & & & $R_{eq} = \frac{T}{C}$ & weil $I_{d,\text{res}} = \frac{V_{\In}}{R}$ \\
+\end{tabular}
+	 
+\subsection{z-Transformation}
+Für sehr hohe Taktfrequenzen können sC-Schaltungen mit der Laplace-Transformation beschrieben werden.
+Sonst muss die z-Transformation verwendet werden.
+
+\begin{tabularx}{\linewidth}{p{0.25\linewidth}XX}
+	\textbf{Bezeichnung} & \textbf{Schaltung} & \textbf{Admittanz} \\ \hline
+	Kapazität & \input{tikz/block_c} & $Y_{c}(z) = C \cdot (1-z^{-1})$ \\
+	Geschaltetes C & \input{tikz/block_sc1} & $Y_{sc}(z) = C$ \\
+	Geschaltetes C mit Inversion & \input{tikz/block_sc2} & $Y_{sc}^{eo}(z) = -C \cdot z^{-1/2}$ \newline $Y_{sc}^{ee}(z) = -C \cdot z^{-1}$ \\
+	\hline
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{p{0.25\linewidth}XX}
+	\textbf{Bezeichnung} & \textbf{Schaltung} & \textbf{Impedanz} \\ \hline
+	Opamp als Integrator & \input{tikz/block_opi} & $\Zop(z) = - \frac{1}{C_f} \frac{1}{1-z^{-1}}$ \\
+	Opamp als Tiefpass & \input{tikz/block_opt_sc}& $\Zop(z) = - \frac{\frac{1}{C_f + C_r}}{1-\frac{C_f}{C_f+C_r}z^{-1}}$ \\
+	\hline
+
+\end{tabularx}
