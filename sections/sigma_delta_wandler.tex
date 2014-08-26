@@ -1,5 +1,21 @@
 \section{Sigma-Delta Wandler}
 
+\begin{multicols}{2}
+	\paragraph{Zeitkontinuierliches Modell} ~\\
+	\includegraphics[width=0.8\linewidth]{images/sigma_delta.jpg}
+	\begin{align*}
+		\text{Signal UTF:} \quad & H_s(s) = \frac{1}{1+sT} \\
+		\text{Noise UTF:} \quad & H_n(s) = \frac{sT}{1+sT}
+	\end{align*}
+	\vfill\columnbreak
+	\paragraph{Zeitdiskretes Modell} ~\\
+	\includegraphics[width=0.8\linewidth]{images/sigma_delta_diskret.jpg}
+	\begin{align*}
+		\text{Signal UTF:} \quad & H_s(z) = z^{-1} \\
+		\text{Noise UTF:} \quad & H_n(z) = 1-z^{-1}
+	\end{align*}
+\end{multicols}
+
 \subsection{Pattern Noise}
 DC-Eingangsspannungen führen zu repetitiven Sequenzen am Modulator-Ausgang, so genanntem Pattern Noise.
 Ist $x$ sehr klein, entstehen repetitive Sequenzen tiefer Frequenz.
