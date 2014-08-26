@@ -55,3 +55,38 @@ $\Zop$.
 		$L_i L_j$: Zwei sich nicht berührende Loops \\
 	\hline
 \end{tabularx}
+
+\newpage
+\subsection{Berechnung von Op-Amp Schaltungen}
+\begin{multicols}{2}
+Betrachtung als Open-Loop System: \\
+\includegraphics[width=0.4\linewidth]{images/op_ol.jpg}
+
+\begin{align*}
+A_{ol}(s) &= \frac{A_{ol,0}}{\left(1+\frac{s}{\omega_{\text{Pol}1}}\right)\left(1+\frac{s}{\omega_{\text{Pol}2}}\right)} = \frac{A_{ol,0}}{1 + \frac{A_{ol,0}}{2 \pi \text{GBP}}s}
+\end{align*}
+
+Betrachtung Op-Amp als Closed-Loop System: \\
+\includegraphics[width=0.8\linewidth]{images/op_feedback.jpg} \\
+mit $\beta(s) = \frac{V_{\text{opn}}}{V_{out}}$, $T_{\In} = \frac{V_{\text{opn}}}{V_{\In}}$
+ergibt sich
+
+\begin{equation*}
+	V_{\Out} = A_{cl}(s) V_{\In} = \frac{T_{\In} A_{ol}(s)}{1+A_{ol}(s) \beta(s)} V_{\In}
+\end{equation*}
+ 
+\end{multicols}
+
+
+\begin{tabularx}{\linewidth}{llX}
+	\textbf{Schaltung} & \textbf{Blockschaltbild} & \textbf{Berechnung} \\ \hline
+	\includegraphics[width=4cm]{images/op_inv_sch.jpg} & 
+	\includegraphics[width=4cm]{images/op_inv_block.jpg} & 
+	$\beta = T_f = \frac{R_1}{R_1 + R_f}$ \newline
+	$\frac{V_{\Out}}{V_{\In}} = -\frac{T_{\In}}{\beta} \frac{1}{1+\frac{1}{\beta A_{ol}}} \approx -\frac{R_f}{R_1} = \frac{1-\beta}{\beta}$ \\
+	\includegraphics[width=4cm]{images/op_ninv_sch.jpg} & 
+	\includegraphics[width=4cm]{images/op_ninv_block.jpg} & 
+	$\beta = T_f = \frac{R_1}{R_1 + R_f}$ \newline
+	$\frac{V_{\Out}}{V_{\In}} = \frac{T_{\In}}{\beta} \frac{1}{1+\frac{1}{\beta A_{ol}}} \approx \frac{R_1 + R_f}{R_1} = \frac{1}{\beta} $\\ \hline
+\end{tabularx}
+
