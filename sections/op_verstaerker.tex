@@ -48,4 +48,21 @@ betrachtet werden.
 		$I_C$ positiv und negativ & $I_E = I_C$ \\
 \end{tabular}
 
-%TODO: gmC Filter
+\subsection{gmC Filter}
+\begin{multicols}{2}
+	Für Transkonduktanz-Verstärker gilt:
+	\begin{equation*}
+		I_{\Out} = g_m \left( V_{\In 2} - V_{\In 1} \right)
+	\end{equation*}
+	
+	$g_m$ wird durch den Bias-Strom eingestellt. 
+	Damit sind Filter möglich, welche flexibel über $I_{\text{bias}}$ oder $U_{\text{bias}}$ eingestellt werden können. \\
+	
+	\paragraph{Integrator mit OTA}~\\
+	\includegraphics[width=5cm]{images/gmC_filter.jpg}
+
+	\begin{align*}
+		I_{\Out}(t) &= -g_m V_{\In} (t) \\
+		V_{\Out}(t) &= \frac{-g_m}{C} \int V_{\In}(t) dt
+	\end{align*}
+\end{multicols}
