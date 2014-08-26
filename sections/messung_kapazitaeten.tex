@@ -25,6 +25,17 @@ bestehend aus der Messkapazität $C_x$ und einem bekannten Widerstand $R$,
 angeregt wird und die Phasenverschiebung mittels eines Lock-In Verstärkers
 gemessen wird.
 
+\begin{multicols}{2}
+	\centering
+	\input{tikz/cap_phase}	
+	\vfill\columnbreak
+	\begin{align*}
+		H(s) &= \frac{1}{1+sRC} \\
+		\left|H(\omega)\right| &= \frac{1}{\sqrt{1+\left(\omega RC\right)^2}} \\
+		\Theta(\omega) &= -\arctan\left(\omega RC\right)
+	\end{align*}
+\end{multicols}
+
 \begin{align*}
 	& \text{Eingangssignal} & f_{\In}(\varphi,t) &= \sin(\omega_0 t + \varphi) \\
 	& \text{Sync-Signal} & f_{\text{sync}}(t) &= \sin(\omega_0 t) \\
@@ -41,9 +52,10 @@ womit sich die Phase des Eingangssignals $f_{\In}$ bestimmen lässt. \\
 Das gleiche Verfahren funktioniert auch mit einem Synchrongleichrichter. 
 Dabei wird das Eingangssignal mit einem zum Sinus phasengleichen Rechtecksignal
 multipliziert:
-\begin{equation*}
-	f_{\text{mod}}(\varphi,t)) = \text{sgn}\left(\sin(\omega_0 t)\right) \cdot \sin(\omega_0 t + \varphi)
-\end{equation*}
+\begin{align*}
+	f_{\text{mod}}(\varphi,t)) &= \text{sgn}\left(\sin(\omega_0 t)\right) \cdot \sin(\omega_0 t + \varphi) \\
+	V_{\text{int}} &= A \frac{2 \sin \varphi}{\pi} \frac{T_{\text{int}}}{R C}
+\end{align*}
 Damit ergibt sich über eine Periode integriert
 \begin{equation*}
 	\bar{f}_{\text{mod}} = \frac{2 \cos(\varphi)}{\pi}
